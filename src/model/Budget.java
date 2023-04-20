@@ -2,6 +2,11 @@ package model;
 
 import javafx.beans.property.*;
 
+/**
+ * Definition: Model Class for Budget
+ * @author romiltiwari
+ *
+ */
 public class Budget {
     private final StringProperty category;
     private final DoubleProperty amount;

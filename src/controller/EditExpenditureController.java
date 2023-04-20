@@ -12,6 +12,11 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.Expenditure;
 
+/**
+ * Definition: Controller class for editing expenditure
+ * @author romiltiwari
+ *
+ */
 public class EditExpenditureController {
 
     @FXML
@@ -42,6 +47,10 @@ public class EditExpenditureController {
         categoryComboBox.setItems(categories);
     }
 
+    /**
+     * Definition: Set expenditure after editing
+     * @param expenditure
+     */
     public void setExpenditure(Expenditure expenditure) {
         this.expenditure = expenditure;
 
@@ -56,6 +65,10 @@ public class EditExpenditureController {
         return saveClicked;
     }
 
+    /**
+     * Definition: Set expenditure after editing
+     * @return Expenditure object
+     */
     public Expenditure getUpdatedExpenditure() {
         LocalDate date = datePicker.getValue();
         String description = descriptionField.getText();
@@ -73,6 +86,9 @@ public class EditExpenditureController {
         return new Expenditure(date, amount, description, category);
     }
     
+    /**
+     * Definition: Save Expenditure after editing
+     */
     @FXML
     private void saveExpenditure() {
         LocalDate date = datePicker.getValue();

@@ -14,6 +14,10 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+/**
+ * @author romiltiwari
+ *
+ */
 public class Main extends Application {
 
 	private Stage primaryStage;
@@ -28,6 +32,9 @@ public class Main extends Application {
         return primaryStage;
     }
     
+    /**
+     * Show Login screen
+     */
     public void showLogin() {
         try {
             FXMLLoader loader = new FXMLLoader(Main.class.getResource("/view/Login.fxml"));
@@ -46,6 +53,9 @@ public class Main extends Application {
         }
     }
     
+    /**
+     * Show Main Application
+     */
     public void showMainApplication() {
     	try {
             FXMLLoader loader = new FXMLLoader(Main.class.getResource("/view/ExpenditureView.fxml"));
@@ -62,6 +72,9 @@ public class Main extends Application {
         }
     }
     
+    /**
+     * Show Sign Up Window
+     */
     public void showSignupWindow() {
         try {
             FXMLLoader loader = new FXMLLoader();
@@ -83,6 +96,9 @@ public class Main extends Application {
         }
     }
     
+    /**
+     * Show Expenditure Window
+     */
     public void showExpenditureWindow() {
         try {
             FXMLLoader loader = new FXMLLoader(Main.class.getResource("/view/ExpenditureView.fxml"));

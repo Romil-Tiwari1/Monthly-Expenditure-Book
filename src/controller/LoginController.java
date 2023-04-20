@@ -12,6 +12,11 @@ import javafx.stage.Stage;
 import model.User;
 import model.UserDatabase;
 
+/**
+ * Definition: Controller class to handle Login Functionality
+ * @author romiltiwari
+ *
+ */
 public class LoginController {
 	
 	
@@ -42,6 +47,10 @@ public class LoginController {
     }
 
 
+    /**
+     * Definition: Handle Login
+     * @param event
+     */
     @FXML
     public void handleLogin(ActionEvent event) {
         String username = usernameField.getText();
@@ -59,6 +68,12 @@ public class LoginController {
         showAlert(Alert.AlertType.ERROR, "Error", message);
     }
     
+    /**
+     * Definition: Show Alert on Error
+     * @param alertType
+     * @param title
+     * @param message
+     */
     private void showAlert(Alert.AlertType alertType, String title, String message) {
         Alert alert = new Alert(alertType);
         alert.setTitle(title);

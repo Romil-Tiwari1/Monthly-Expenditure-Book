@@ -3,6 +3,11 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Definition: Model Class for User
+ * @author romiltiwari
+ *
+ */
 public class User {
 	private static User instance;
     private static String username;

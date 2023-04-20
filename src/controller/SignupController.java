@@ -9,6 +9,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+/**
+ * Definition: Controller class to handle Sing Up Functionality 
+ * @author romiltiwari
+ *
+ */
 public class SignupController {
 	
 	private Main main;
@@ -33,6 +38,10 @@ public class SignupController {
         signUpButton.setOnAction(event -> handleSignUp(event));
     }
 
+    /**
+     * Definition: Handle Sign Up
+     * @param event
+     */
     @FXML
     private void handleSignUp(ActionEvent event) {
         String username = usernameField.getText();
@@ -57,6 +66,12 @@ public class SignupController {
         showAlert(Alert.AlertType.ERROR, "Error", message);
     }
 
+    /**
+     * Definition: Handle Alert on error
+     * @param alertType
+     * @param title
+     * @param message
+     */
     private void showAlert(Alert.AlertType alertType, String title, String message) {
         Alert alert = new Alert(alertType);
         alert.setTitle(title);

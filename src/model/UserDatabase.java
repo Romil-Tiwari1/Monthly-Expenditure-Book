@@ -22,6 +22,11 @@ import java.time.format.DateTimeParseException;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 
+/**
+ * Definition: Model Class for Defining User Database
+ * @author romiltiwari
+ *
+ */
 public class UserDatabase {
 
 	private static UserDatabase instance;

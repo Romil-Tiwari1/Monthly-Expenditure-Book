@@ -2,6 +2,11 @@ package model;
 
 import java.time.LocalDate;
 
+/**
+ * Definition: Model class for Expenditure
+ * @author romiltiwari
+ *
+ */
 public class Expenditure {
     private LocalDate date;
     private String description;

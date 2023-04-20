@@ -3,6 +3,11 @@ package model;
 import javafx.beans.binding.Bindings;
 import javafx.scene.control.TableCell;
 
+/**
+ * Definition: Model Class for Updating Table Cell
+ * @author romiltiwari
+ *
+ */
 public class UpdatingTableCell extends TableCell<Budget, Double> {
     @Override
     protected void updateItem(Double item, boolean empty) {

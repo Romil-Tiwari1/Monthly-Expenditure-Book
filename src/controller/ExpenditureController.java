@@ -39,6 +39,11 @@ import javafx.scene.chart.PieChart;
 import javafx.scene.layout.AnchorPane;
 
 
+/**
+ * Definition: Controller class for Expenditure handling, Graph generation etc.
+ * @author romiltiwari
+ *
+ */
 public class ExpenditureController {
 	private Main main;
 
@@ -122,19 +127,22 @@ public class ExpenditureController {
 	@FXML
 	private Label remainingBudgetLabel;
 
-	
+	//User Database
 	private UserDatabase userDatabase;
 	private User user;
 
 
 
-	// Define a list of categories
+	// Define a list of categories for various functionalities 
 	private ObservableList<String> categories = FXCollections.observableArrayList("Rent", "Groceries", "Utilities",
 			"Entertainment", "Transportation", "Others");
-
 	private ObservableList<Budget> budgets = FXCollections.observableArrayList();
 	private ObservableList<Budget> remainingBudgets = FXCollections.observableArrayList();
 
+	
+	/**
+	 * Initialize method to init() objects and lists when the application is launched first
+	 */
 	@FXML
 	public void initialize() {
 		userDatabase = UserDatabase.getInstance();
@@ -194,6 +202,9 @@ public class ExpenditureController {
 		updateLabels();
 	}
 
+	/**
+	 * Definition: Method to handle add expenditure
+	 */
 	@FXML
 	private void addExpenditure() {
 		LocalDate date = datePicker.getValue();
@@ -224,6 +235,11 @@ public class ExpenditureController {
 		clearForm();
 	}
 
+	
+	/**
+	 * Definition: Show error message
+	 * @param message
+	 */
 	private void showErrorAlert(String message) {
 		Alert alert = new Alert(Alert.AlertType.ERROR);
 		alert.setTitle("Error");
@@ -232,6 +248,9 @@ public class ExpenditureController {
 		alert.showAndWait();
 	}
 
+	/**
+	 * Definition: Clear form after adding particular expense
+	 */
 	private void clearForm() {
 		datePicker.setValue(null);
 		descriptionField.clear();
@@ -239,6 +258,9 @@ public class ExpenditureController {
 		categoryComboBox.getSelectionModel().clearSelection();
 	}
 
+	/**
+	 * Definition: Handle Search Expenditure Functionality
+	 */
 	@FXML
 	private void searchExpenditures() {
 		String searchQuery = searchField.getText().toLowerCase();
@@ -252,6 +274,9 @@ public class ExpenditureController {
 		});
 	}
 
+	/**
+	 * Definition: Handle Edit Expenditure Functionality
+	 */
 	@FXML
 	private void editExpenditure() {
 		Expenditure selectedExpenditure = expenditureTable.getSelectionModel().getSelectedItem();
@@ -302,6 +327,11 @@ public class ExpenditureController {
 		}
 	}
 	
+	/**
+	 * Definition: Update Budget After Expenditure is edited
+	 * @param originalExpenditure
+	 * @param updatedExpenditure
+	 */
 	private void updateRemainingBudgetAfterEditing(Expenditure originalExpenditure, Expenditure updatedExpenditure) {
 	    // Return the original amount to the budget if the category has changed or if the amount has changed
 	    if (!originalExpenditure.getCategory().equals(updatedExpenditure.getCategory()) || originalExpenditure.getAmount() != updatedExpenditure.getAmount()) {
@@ -323,6 +353,10 @@ public class ExpenditureController {
 	}
 
 
+	/**
+	 * Definition: Update total remaining budget after any expenditure is added
+	 * @param expenditure
+	 */
 	private void updateRemainingBudget(Expenditure expenditure) {
 		for (Budget budget : budgets) {
 			if (budget.getCategory().equals(expenditure.getCategory())) {
@@ -333,6 +367,9 @@ public class ExpenditureController {
 		updatePieChart();
 	}
 	
+	/**
+	 * Definition: Update Pie Chart
+	 */
 	private void updatePieChart() {
 	    PieChart pieChart = new PieChart();
 	    pieChart.setTitle("Remaining Budget");
@@ -345,6 +382,9 @@ public class ExpenditureController {
 	    pieChartPane.getChildren().setAll(pieChart);
 	}
 	
+	/**
+	 * Definition: Update Remaining Budget and Total Expenditure Labels
+	 */
 	private void updateLabels() {
 	    double totalExpenditure = expenditures.stream().mapToDouble(Expenditure::getAmount).sum();
 	    totalExpenditureLabel.setText(String.format("Total Expenditure: %.2f", totalExpenditure));
@@ -354,6 +394,9 @@ public class ExpenditureController {
 	}
 
 	
+	/**
+	 * Definition: Update Expenditure Pie Chart
+	 */
 	private void updateExpenditurePieChart() {
 	    PieChart expenditurePieChart = new PieChart();
 	    expenditurePieChart.setTitle("Expenditure by Category");
@@ -375,6 +418,9 @@ public class ExpenditureController {
 	    expenditurePieChartPane.getChildren().setAll(expenditurePieChart);
 	}
 	
+	/**
+	 * Definition: Handle Export FUnctionality
+	 */
 	@FXML
 	public void handleExport() {
 	    FileChooser fileChooser = new FileChooser();
@@ -390,6 +436,9 @@ public class ExpenditureController {
 	    }
 	}
 	
+	/**
+	 * Definition: Handle Import Functionality
+	 */
 	@FXML
 	public void handleImport() {
 	    FileChooser fileChooser = new FileChooser();
@@ -407,10 +456,10 @@ public class ExpenditureController {
 	    }
 	}
 	
+	/**
+	 * Definition: Populate Expenditure Table
+	 */
 	private void populateExpenditureTable() {
-	    // Clear the current expenditure list
-	    //expenditures.clear();
-
 	    // Get the updated expenditure list from the user
 	    List<Expenditure> userExpenditures = user.getExpenditures();
 
